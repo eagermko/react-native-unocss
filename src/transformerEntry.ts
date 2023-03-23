@@ -6,7 +6,7 @@ const unoTransformer = {
   async transform(info: any) {
     let { filename, options, src, plugins } = info;
     if (!filename.startsWith('node_modules')) {
-      src = transform(src);
+      src = await transform(src);
     }
     return upstreamTransformer.transform({ filename, options, src, plugins });
   },
