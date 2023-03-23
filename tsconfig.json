@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "lib": ["ESNext"],
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "jsx": "react-native"
+  }
+}
