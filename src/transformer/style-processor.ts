@@ -56,7 +56,7 @@ class StyleSheet {
     return this.styleSheet;
   }
   get size() {
-    return Object.keys(this.styleSheet);
+    return Object.keys(this.styleSheet).length;
   }
 }
 
