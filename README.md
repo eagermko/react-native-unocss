@@ -1,8 +1,19 @@
 # Uno With React Native
+Using UnoCSS in a React Native project [Demo](https://github.com/eagermko/unonative-demo)
+
+![image-20230322211848407](doc/image-20230322211848407.png)
 
 ## Setup
 
-Uno Config for vscode plugin auto completion
+```bash
+yarn add unonative
+```
+
+### Basic setup
+
+
+1. Uno Config for vscode plugin auto completion
+
 ```ts
 // uno.config.ts
 import { defineConfig } from 'unocss';
@@ -13,7 +24,7 @@ export default defineConfig({
 });
 ```
 
-Transform JsxElement with className to Wrapper
+2. Transform JsxElement with className to Wrapper
 ```js
 // babel.config.js
 // npm i babel-plugin-jsx-classlist
@@ -29,7 +40,7 @@ module.exports = function(api) {
 
 ```
 
-Due to Babel Visitor **not supporting** asynchronous processing of source code, we have moved the processing of style collection/Icon to Metro transformer.
+3. Due to Babel Visitor **not supporting** asynchronous processing of source code, we have moved the processing of style collection/Icon to Metro transformer.
 ```js
 // metro.config.js
 // Learn more https://docs.expo.io/guides/customizing-metro
@@ -44,6 +55,22 @@ module.exports = config;
 
 ```
 
+### Enable SVG icon support (**optional**)
+```bash
+expo install react-native-svg
+yarn add @iconify/json
+```
+After importing the dependencies, you can use them in your project.
+```tsx
+import { Icon } from 'unonative';
+
+export function App() {
+  return <View>
+    <Icon icon="cib-addthis" className="w-32px h-32px text-red-100" />
+  </View>  
+}
+```
+Icons can be sourced from [icones](https://icones.js.org/) using the format "**collection**-(icon)".
 ## How it works
 
 **Source Code**
@@ -115,7 +142,12 @@ __unonative__.register({
 });
 ```
 
+## Demo
+
+[unonative-demo](https://github.com/eagermko/unonative-demo)
+
 ## Roadmap
+
 - [ ] Exporting type definitions
 - [ ] Adding a VW preset to convert PX units to VW units
 - [ ] Generating CSS using uno.config.ts at the project root path
