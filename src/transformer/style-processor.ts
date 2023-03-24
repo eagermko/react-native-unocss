@@ -58,6 +58,15 @@ class StyleSheet {
   }
 }
 
+function uniq(arr: any[]) {
+  const result: any[] = [];
+  for (const item of arr) {
+    if (!result.includes(item)) result.push(item);
+  }
+
+  return result;
+}
+
 export async function loadUnoConfig(workdir: string) {
   const defaultConfig = { presets: preset };
   if (!workdir) return defaultConfig;
@@ -69,7 +78,7 @@ export async function loadUnoConfig(workdir: string) {
 
   config.presets ??= [];
   // @ts-ignore
-  config.presets = [...config.presets, ...preset];
+  config.presets = uniq([...config.presets, ...preset]);
 
   return config;
 }
