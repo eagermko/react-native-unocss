@@ -30,10 +30,10 @@ function App() {
 `;
 
 it('transform code correctly', async () => {
-	const result = await transform(source);
-	const babelResult = await doBabelTransform(result);
+  const result = await transform(source, { projectRoot: '' });
+  const babelResult = await doBabelTransform(result);
 
-	expect(babelResult).toMatchInlineSnapshot(`
+  expect(babelResult).toMatchInlineSnapshot(`
 		"import { UnoStyled as _UnoStyled } from \\"unonative\\";
 		import __unonative__ from \\"unonative\\";
 		import { Icon } from 'unonative';

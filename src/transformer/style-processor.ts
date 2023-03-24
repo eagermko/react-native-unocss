@@ -1,7 +1,8 @@
+import { loadConfig } from '@unocss/config';
+import transform from 'css-to-react-native';
+import cssom from 'cssom';
 import { Preset, UnoGenerator } from 'unocss';
 import { presetReactNative } from '../preset-react-native';
-import cssom from 'cssom';
-import transform from 'css-to-react-native';
 
 const remRE = /(-?[\.\d]+)rem/g;
 
@@ -28,9 +29,6 @@ export default function remToPxPreset(options: RemToPxOptions = {}): Preset {
 }
 
 export const preset = [presetReactNative(), remToPxPreset()];
-const generator = new UnoGenerator({
-  presets: preset,
-});
 
 function toTuple(style: any) {
   const tuple: [string, string][] = [];
@@ -60,7 +58,36 @@ class StyleSheet {
   }
 }
 
-export async function genStyle(source: string) {
+export async function loadUnoConfig(workdir: string) {
+  const defaultConfig = { presets: preset };
+  if (!workdir) return defaultConfig;
+
+  const { config, sources } = await loadConfig(workdir);
+  if (!sources.length) {
+    return defaultConfig;
+  }
+
+  config.presets ??= [];
+  // @ts-ignore
+  config.presets = [...config.presets, ...preset];
+
+  return config;
+}
+
+let _generator: UnoGenerator;
+export async function resolveGenerator(workdir: string) {
+  if (process.env.NODE_ENV !== 'test' && _generator) {
+    return _generator;
+  }
+
+  const config = await loadUnoConfig(workdir);
+  // @ts-ignore
+  _generator = new UnoGenerator(config);
+  return _generator;
+}
+
+export async function genStyle(source: string, workdir: string = '') {
+  const generator = await resolveGenerator(workdir);
   const tokens = await generator.applyExtractors(source);
   const result = await generator.generate(tokens);
   const ast = cssom.parse(result.css);

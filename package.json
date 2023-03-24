@@ -1,6 +1,6 @@
 {
   "name": "unonative",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "dist/index.js",
   "type": "commonjs",
@@ -41,6 +41,7 @@
   "dependencies": {
     "@babel/helper-module-imports": "^7.18.6",
     "@iconify/utils": "^2.1.5",
+    "@unocss/config": "^0.50.6",
     "css-to-react-native": "^3.2.0",
     "cssom": "^0.5.0",
     "unocss": "^0.50.4"

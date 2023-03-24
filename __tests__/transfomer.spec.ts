@@ -16,7 +16,7 @@ function App() {
 `;
 
 it('translating source code', async () => {
-  const result = await transform(source);
+  const result = await transform(source, { projectRoot: '' });
   expect(result).toMatchInlineSnapshot(`
     "import __unonative__ from \\"unonative\\"
     import { Icon } from 'unonative';
@@ -32,3 +32,14 @@ it('translating source code', async () => {
     __unonative__.register({\\"bg-red-100\\":{\\"backgroundColor\\":\\"rgba(254,226,226,1)\\"},\\"text-lg\\":{\\"fontSize\\":18},\\"h-8\\":{\\"height\\":32},\\"w-8\\":{\\"width\\":32}})"
   `);
 });
+
+it('translating with config file', async () => {
+  const source = `<Text className='bg-primary'>Hello</Text>`;
+  const result = await transform(source, { projectRoot: __dirname });
+
+  expect(result).toMatchInlineSnapshot(`
+    "import __unonative__ from \\"unonative\\"
+    <Text className='bg-primary'>Hello</Text>
+    __unonative__.register({\\"bg-primary\\":{\\"backgroundColor\\":\\"red\\"}})"
+  `);
+})
