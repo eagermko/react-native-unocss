@@ -17,7 +17,7 @@ yarn add unonative
 ```ts
 // uno.config.ts
 import { defineConfig } from 'unocss';
-import { preset } from 'unonative';
+import { preset } from 'unonative/preset';
 
 export default defineConfig({
   presets: [...preset],
