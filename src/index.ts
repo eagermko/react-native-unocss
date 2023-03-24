@@ -5,7 +5,6 @@ let Icon = IconX;
 try {
   require.resolve('react-native-svg');
 } catch (e: any) {
-  console.error('react-native-svg not installed');
   Icon = IconNotImplement;
 }
 
