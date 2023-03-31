@@ -26,13 +26,6 @@ export const borders: Rule[] = [
   [/^(?:border|b)-(block|inline)-(?:color-)?(.+)$/, handlerBorderColor],
   [/^(?:border|b)-([bi][se])-(?:color-)?(.+)$/, handlerBorderColor],
 
-  // opacity
-  [/^(?:border|b)-()op(?:acity)?-?(.+)$/, handlerBorderOpacity, { autocomplete: '(border|b)-(op|opacity)-<percent>' }],
-  [/^(?:border|b)-([xy])-op(?:acity)?-?(.+)$/, handlerBorderOpacity],
-  [/^(?:border|b)-([rltbse])-op(?:acity)?-?(.+)$/, handlerBorderOpacity],
-  [/^(?:border|b)-(block|inline)-op(?:acity)?-?(.+)$/, handlerBorderOpacity],
-  [/^(?:border|b)-([bi][se])-op(?:acity)?-?(.+)$/, handlerBorderOpacity],
-
   // radius
   [/^(?:border-|b-)?(?:rounded|rd)()(?:-(.+))?$/, handlerRounded, { autocomplete: ['(border|b)-(rounded|rd)', '(border|b)-(rounded|rd)-<num>', '(rounded|rd)', '(rounded|rd)-<num>'] }],
   [/^(?:border-|b-)?(?:rounded|rd)-([rltbse])(?:-(.+))?$/, handlerRounded],
@@ -62,20 +55,6 @@ const borderColorResolver = (direction: string) => ([, body]: string[], theme: T
         [`border${direction}-color`]: colorToString(cssColor, alpha),
       }
     }
-    if (direction === '') {
-      return {
-        '--un-border-opacity': colorOpacityToString(cssColor),
-        'border-color': colorToString(cssColor, 'var(--un-border-opacity)'),
-      }
-    }
-    else {
-      return {
-        // Separate this return since if `direction` is an empty string, the first key will be overwritten by the second.
-        '--un-border-opacity': colorOpacityToString(cssColor),
-        [`--un-border${direction}-opacity`]: 'var(--un-border-opacity)',
-        [`border${direction}-color`]: colorToString(cssColor, `var(--un-border${direction}-opacity)`),
-      }
-    }
   }
   else if (color) {
     return {
@@ -101,12 +80,6 @@ function handlerBorderColor([, a = '', c]: string[], { theme }: RuleContext<Them
       ...directionMap[a].map(i => borderColorResolver(i)(['', c], theme)),
     )
   }
-}
-
-function handlerBorderOpacity([, a = '', opacity]: string[]): CSSEntries | undefined {
-  const v = h.bracket.percent(opacity)
-  if (a in directionMap && v != null)
-    return directionMap[a].map(i => [`--un-border${i}-opacity`, v])
 }
 
 function handlerRounded([, a = '', s]: string[], { theme }: RuleContext<Theme>): CSSEntries | undefined {
