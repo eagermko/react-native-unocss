@@ -1,4 +1,4 @@
-import { createValueHandler } from 'unocss'
+import { createValueHandler } from '@unocss/core'
 import * as valueHandlers from './handlers'
 
 export const handler = createValueHandler(valueHandlers)

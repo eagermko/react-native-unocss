@@ -1,4 +1,4 @@
-import type { Rule } from 'unocss'
+import type { Rule } from '@unocss/core'
 import type { Theme } from '../theme'
 import { globalKeywords, handler as h, makeGlobalStaticRules } from '../utils'
 

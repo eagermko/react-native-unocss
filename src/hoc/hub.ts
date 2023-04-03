@@ -1,4 +1,4 @@
-import type { StyleProp, ViewStyle } from 'react-native/types';
+import type { StyleProp, ViewStyle } from 'react-native';
 
 class Hub {
   private styleHub = new Map<string, any>();

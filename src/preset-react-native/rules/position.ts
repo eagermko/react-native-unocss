@@ -1,4 +1,4 @@
-import type { CSSEntries, Rule, RuleContext } from 'unocss'
+import type { CSSEntries, Rule, RuleContext } from '@unocss/core'
 import type { Theme } from '../theme'
 import { globalKeywords, handler as h, insetMap, makeGlobalStaticRules } from '../utils'
 

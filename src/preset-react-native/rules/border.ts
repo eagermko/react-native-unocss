@@ -1,4 +1,4 @@
-import type { CSSEntries, CSSObject, Rule, RuleContext } from 'unocss'
+import type { CSSEntries, CSSObject, Rule, RuleContext } from '@unocss/core'
 import type { Theme } from '../theme'
 import { colorOpacityToString, colorToString, cornerMap, directionMap, globalKeywords, handler as h, hasParseableColor, parseColor } from '../utils'
 

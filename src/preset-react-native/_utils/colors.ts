@@ -1,5 +1,5 @@
-import type { CSSColorValue, RGBAColorValue } from 'unocss'
-import { escapeRegExp } from 'unocss'
+import type { CSSColorValue, RGBAColorValue } from '@unocss/core'
+import { escapeRegExp } from '@unocss/core'
 import { getComponents } from './utilities'
 
 /* eslint-disable no-case-declarations */

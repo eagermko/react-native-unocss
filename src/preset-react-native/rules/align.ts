@@ -1,4 +1,4 @@
-import type { Rule } from 'unocss'
+import type { Rule } from '@unocss/core'
 import { globalKeywords } from '../_utils/mappings'
 
 const verticalAlignAlias: Record<string, string> = {

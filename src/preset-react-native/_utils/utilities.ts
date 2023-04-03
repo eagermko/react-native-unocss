@@ -1,5 +1,5 @@
-import type { CSSEntries, CSSObject, DynamicMatcher, ParsedColorValue, Rule, RuleContext, VariantContext } from 'unocss'
-import { isString, toArray } from 'unocss'
+import type { CSSEntries, CSSObject, DynamicMatcher, ParsedColorValue, Rule, RuleContext, VariantContext } from '@unocss/core'
+import { isString, toArray } from '@unocss/core'
 import type { Theme } from '../_theme';
 import { colorOpacityToString, colorToString, parseCssColor } from './colors'
 import { handler as h } from './handlers'

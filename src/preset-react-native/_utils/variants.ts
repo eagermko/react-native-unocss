@@ -1,5 +1,5 @@
-import type { VariantHandlerContext, VariantObject } from 'unocss'
-import { escapeRegExp } from 'unocss'
+import type { VariantHandlerContext, VariantObject } from '@unocss/core'
+import { escapeRegExp } from '@unocss/core'
 import { getBracket } from '../utils'
 
 export const variantMatcher = (name: string, handler: (input: VariantHandlerContext) => Record<string, any>): VariantObject => {

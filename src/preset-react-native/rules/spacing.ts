@@ -1,4 +1,4 @@
-import type { Rule } from 'unocss'
+import type { Rule } from '@unocss/core'
 import { directionSize } from '../utils'
 
 export const paddings: Rule[] = [

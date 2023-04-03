@@ -1,5 +1,5 @@
-import type { Rule } from 'unocss'
-import { toArray } from 'unocss'
+import type { Rule } from '@unocss/core'
+import { toArray } from '@unocss/core'
 import type { Theme } from '../theme'
 import { colorResolver, colorableShadows, handler as h, splitShorthand } from '../utils'
 

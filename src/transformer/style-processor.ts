@@ -1,7 +1,7 @@
 import { loadConfig } from '@unocss/config';
 import transform from 'css-to-react-native';
 import cssom from 'cssom';
-import { Preset, UnoGenerator } from 'unocss';
+import { Preset, UnoGenerator } from '@unocss/core';
 import { presetReactNative } from '../preset-react-native';
 
 const remRE = /(-?[\.\d]+)rem/g;

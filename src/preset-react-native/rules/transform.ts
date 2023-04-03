@@ -1,4 +1,4 @@
-import type { Rule } from 'unocss'
+import type { Rule } from '@unocss/core'
 import { handler as h } from '../utils'
 
 export const transforms: Rule[] = [

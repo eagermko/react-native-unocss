@@ -7,15 +7,23 @@ const stylesToObject = (styles: Record<string, any>[]) => {
   }, {});
 };
 
-export default function Icon(props: { icon: string; className: string }) {
-  const SvgXml = require('react-native-svg').SvgXml;
+function tryRequireSvgXml() {
+  try {
+    return require('react-native-svg').SvgXml;
+  } catch (e) {
+    return null;
+  }
+}
+
+const SvgXml = tryRequireSvgXml();
+function IconSvgXml(props: { icon: string; className: string }) {
   // @ts-ignore
   const { icon, style } = props;
   const styles = React.useMemo(() => stylesToObject(style), [props.className]);
   if (!icon.startsWith('<svg'))
     return (
       <View>
-        <Text>{icon} Not Found</Text>
+        <Text>{icon} not found</Text>
       </View>
     );
 
@@ -30,10 +38,14 @@ export default function Icon(props: { icon: string; className: string }) {
   );
 }
 
-export function IconNotImplement(props: { icon: string; className: string }) {
+function IconNotImplement(props: { icon: string; className: string }) {
   return (
     <View>
       <Text>react-native-svg not resolve</Text>
     </View>
   );
+}
+
+export function Icon(props: { icon: string; className: string }) {
+  return SvgXml ? <IconSvgXml {...props} /> : <IconNotImplement {...props} />;
 }

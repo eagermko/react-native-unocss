@@ -1,4 +1,4 @@
-import { escapeSelector } from 'unocss'
+import { escapeSelector } from '@unocss/core'
 import { globalKeywords } from '../mappings'
 import { numberRE, numberWithUnitRE, unitOnlyRE } from './regex'
 

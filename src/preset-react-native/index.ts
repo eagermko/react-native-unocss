@@ -1,4 +1,4 @@
-import { Preset, PresetOptions } from 'unocss';
+import { Preset, PresetOptions } from '@unocss/core';
 import { rules } from './rules';
 import { theme } from './_theme';
 export interface Theme {
@@ -68,10 +68,10 @@ export const presetReactNative = (options: PresetOptions = {}): Preset<Theme> =>
   options.variablePrefix = options.variablePrefix ?? 'un-';
 
   return {
-    name: '@unocss/preset-mini',
+    name: 'unonative/preset-react',
     options,
     prefix: options.prefix,
-    rules,
     theme: theme,
+    rules,
   };
 };

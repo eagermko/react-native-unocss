@@ -148,6 +148,6 @@ __unonative__.register({
 
 ## Roadmap
 
-- [ ] Exporting type definitions
+- [x] Exporting type definitions
 - [ ] Adding a VW preset to convert PX units to VW units
 - [x] Generating CSS using uno.config.ts at the project root path

@@ -10,6 +10,8 @@ export default defineConfig({
   splitting: false,
   sourcemap: false,
   clean: true,
+  dts: true,
+  format: ['cjs', 'esm'],
   external: [
     'metro-react-native-babel-transformer',
     'react',
