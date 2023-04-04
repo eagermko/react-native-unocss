@@ -71,6 +71,13 @@ export function App() {
 }
 ```
 Icons can be sourced from [icones](https://icones.js.org/) using the format "**collection**-(icon)".
+
+### Use with Typescript
+```diff
+// project .d.ts
++/// <reference types="unonative/type" />
+```
+
 ## How it works
 
 **Source Code**
