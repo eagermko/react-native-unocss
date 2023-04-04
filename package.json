@@ -1,9 +1,10 @@
 {
   "name": "unonative",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "",
   "main": "dist/index.js",
   "type": "commonjs",
+  "packageManager": "pnpm@7.20.0",
   "scripts": {
     "test": "vitest",
     "build": "tsup"
